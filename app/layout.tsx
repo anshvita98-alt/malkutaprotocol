@@ -1,0 +1,58 @@
+import type { Metadata, Viewport } from "next";
+import "@rainbow-me/rainbowkit/styles.css";
+import "./globals.css";
+import { Providers } from "./providers";
+
+export const metadata: Metadata = {
+  title: "Kingdom Within — Malkuta Protocol",
+  description: "A deterministic scripture geometry instrument translating sacred text into verifiable frequency, color, and form.",
+  metadataBase: new URL("https://kingdomwithin.thehouseofjoshi.com"),
+  openGraph: {
+    type: "website",
+    siteName: "Kingdom Within",
+    title: "Kingdom Within — Malkuta Protocol",
+    description: "A precision instrument translating scripture into verifiable harmonic frequency and deterministic geometric form.",
+    images: [{ url: "/og/kingdom-within-social.png", width: 1200, height: 630, alt: "Kingdom Within Malkuta Protocol precision instrument interface" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kingdom Within — Malkuta Protocol",
+    description: "Scripture → signal → form.",
+    images: ["/og/kingdom-within-social.png"],
+  },
+  icons: { icon: "/house-of-joshi-mark.png", apple: "/house-of-joshi-mark.png" },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#0b0d0c",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className="dark">
+      <head>
+        <meta name="base:app_id" content="6a99a1a7dd129945bdac1205" />
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JFWVZD9SEW" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-JFWVZD9SEW');`,
+          }}
+        />
+      </head>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  );
+}
